@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+  <h3 style="text-align: center;" id="hello"></h3>
+
+  <script type="text/javascript" src="index.js"></script>
+  <script type="text/javascript">
+
+    var elem = document.getElementById('hello');
+    
+    var sayHello;
+
+    function InitWrappers() {
+      sayHello = Module.cwrap('sayHello', 'string');
+    }
+
+    Module.onRuntimeInitialized = function() {
+      InitWrappers();
+      elem.innerHTML = sayHello();
+    }
+    
+  </script>
+
+</body>
+</html>
